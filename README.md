@@ -99,3 +99,35 @@ SarvamTTS/
 ## License
 
 MIT License
+
+## Screen Reader
+
+Read text from any website or app on your screen and have it narrated aloud.
+
+### Usage
+
+```bash
+# Copy text on screen first (select text and Ctrl+C), then run
+python screen_reader.py --lang en-IN --preset news
+
+# With delay to switch windows
+python screen_reader.py --delay 5 --lang hi-IN
+
+# Use OCR if text isn't selectable (experimental)
+python screen_reader.py --ocr --lang en-IN
+```
+
+### Options
+
+| Option | Description | Default |
+|---|---|---|
+| `--lang` | Target language code | en-IN |
+| `--speaker` | Voice speaker ID | - |
+| `--model` | TTS model | bulbul:v4-flash |
+| `--pace` | Speech pace (0.5-2.0) | - |
+| `--preset` | news, fiction, or education | - |
+| `--ocr` | Use OCR to extract text from screen | false |
+| `--out` | Output audio file | screen_output.wav |
+| `--delay` | Delay before capturing (seconds) | 3 |
+
+The screen reader will first check your clipboard for copied text. If nothing is found, it will wait for you to copy the text you want to read.
