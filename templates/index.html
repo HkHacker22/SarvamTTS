@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarvam TTS Reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-dot"></span>
+                <h1>Sarvam TTS Reader</h1>
+            </div>
+            <p class="subtitle">Convert text to natural-sounding Indian language speech</p>
+        </header>
+
+        <main class="main">
+            <section class="card">
+                <div class="card-header">
+                    <h2>Input</h2>
+                </div>
+                <div class="card-body">
+                    <textarea id="textInput" class="textarea" placeholder="Enter your text, article, or script here..." rows="8"></textarea>
+                    
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="lang">Language</label>
+                            <select id="lang" class="select">
+                                <option value="en-IN">English (India)</option>
+                                <option value="hi-IN">Hindi</option>
+                                <option value="bn-IN">Bengali</option>
+                                <option value="ta-IN">Tamil</option>
+                                <option value="te-IN">Telugu</option>
+                                <option value="kn-IN">Kannada</option>
+                                <option value="ml-IN">Malayalam</option>
+                                <option value="mr-IN">Marathi</option>
+                                <option value="gu-IN">Gujarati</option>
+                                <option value="pa-IN">Punjabi</option>
+                                <option value="od-IN">Odia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="preset">Preset</label>
+                            <select id="preset" class="select">
+                                <option value="">Custom</option>
+                                <option value="news">News (Clear & Steady)</option>
+                                <option value="fiction">Fiction (Expressive)</option>
+                                <option value="education">Education (Calm & Clear)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <select id="model" class="select">
+                                <option value="bulbul:v4-flash">Bulbul v4 Flash</option>
+                                <option value="bulbul:v3">Bulbul v3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pace">Pace: <span id="paceValue">1.0</span></label>
+                            <input type="range" id="pace" class="range" min="0.5" max="2.0" step="0.05" value="1.0">
+                        </div>
+                    </div>
+                    
+                    <button id="synthesizeBtn" class="btn btn-primary">
+                        <span class="btn-text">Generate Audio</span>
+                        <span class="btn-loader" style="display: none;"></span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="card" id="resultCard" style="display: none;">
+                <div class="card-header">
+                    <h2>Result</h2>
+                </div>
+                <div class="card-body">
+                    <audio id="audioPlayer" class="audio" controls></audio>
+                    <button id="downloadBtn" class="btn btn-secondary">Download Audio</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
